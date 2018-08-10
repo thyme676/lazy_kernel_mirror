@@ -5,7 +5,7 @@ Have the latest, bleeding edge, kernel at your fingertips!
 
 # Requirements
 aria2 must be installed.  
-This script also assumes the mirror.sh script is run in a publicly accessible html directory.
+This script also assumes the mirror.sh script is run in a publicly readable html directory.
 
 # Usage
 This is 2 parts, a mirror.sh script (server) and a download script (client).  
