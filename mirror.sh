@@ -1,5 +1,4 @@
 #!/bin/bash
-#version 1.6
 kernels='kernels'
 
 aria2c -q -x 16 --allow-overwrite=true  http://kernel.ubuntu.com/~kernel-ppa/mainline/ ;
@@ -7,7 +6,6 @@ aria2c -q -x 16 --allow-overwrite=true  http://kernel.ubuntu.com/~kernel-ppa/mai
 echo -e "Latest kernel is:"  ;
 
 chmod 644 index.html
-#latest=`tail -n 5 index.html | grep href= | cut -c 81-89 `
 latest=`tail -n 5 index.html | grep href= | cut -d"/"  -f5 | cut -c 3-`
 echo $latest
 echo $latest > latest
@@ -22,6 +20,7 @@ modules=`cat index.html | grep modules | grep href= | sed -n 1p | cut -d">" -f2 
 
 echo -e $all "\n" $headers "\n" $image
 
+[ -d kernels ] || mkdir kernels
 cd ${kernels};
 pwd
 sleep 10;
