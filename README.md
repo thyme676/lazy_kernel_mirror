@@ -1,5 +1,6 @@
 # lazy_kernel_mirror
 2 scripts that mirror the ubuntu mainline kernels.  
+Have the latest, bleeding edge, kernel at your fingertips!  
 *Warning! RC kernels are unstable and not for production!*
 
 # Usage
