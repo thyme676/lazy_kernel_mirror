@@ -1,6 +1,5 @@
 #!/bin/bash
 # Copywright mark williams 2018
-# Version 1.6
 site=`cat site.txt`
 aria2c -q -x 16 --allow-overwrite=true --auto-file-renaming=false ${site}/index.html ;
 
