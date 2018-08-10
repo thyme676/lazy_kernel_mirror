@@ -1,0 +1,9 @@
+# Ignore cached kernels
+kernels/
+
+# Ignore cached files.
+latest
+index.html
+
+# Ignore config file
+site.txt
