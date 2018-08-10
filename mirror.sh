@@ -1,6 +1,6 @@
 #!/bin/bash
-version 1.6
-kernels='./kernels'
+#version 1.6
+kernels='/kernels'
 
 aria2c -q -x 16 --allow-overwrite=true  http://kernel.ubuntu.com/~kernel-ppa/mainline/ ;
 
