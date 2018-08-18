@@ -21,7 +21,7 @@ second_last=`tail -n 6 index.html | grep href= | cut -d"/"  -f5 | cut -c 3- | he
 major=`tail -n 6 index.html | grep href= | cut -d"/"  -f5 | cut -c 3- | head -n 1 | cut -d"." -f1`
 
 ret=`numCompare $second_last $last`
-if [ $ret -eq 0 ]; then
+if [ $ret -eq 1 ]; then
     latest=`echo ${major}.${second_last}`
 else
     latest=`echo ${major}.${last}`
