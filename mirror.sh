@@ -18,12 +18,13 @@ chmod 644 index.html
 #latest=`tail -n 5 index.html | grep href= | cut -d"/"  -f5 | cut -c 3-`
 last=`tail -n 5 index.html | grep href= | cut -d"/"  -f5 | cut -c 3- | cut -d"." -f2-`
 second_last=`tail -n 6 index.html | grep href= | cut -d"/"  -f5 | cut -c 3- | head -n 1 | cut -d"." -f2-`
+major=`tail -n 6 index.html | grep href= | cut -d"/"  -f5 | cut -c 3- | head -n 1 | cut -d"." -f1`
 
 ret=`numCompare $second_last $last`
 if [ $ret -eq 0 ]; then
-    latest=`echo $second_last`
+    latest=`echo v${major}.${second_last}`
 else
-    latest=`echo $last`
+    latest=`echo v${major}.${last}`
 fi
 
 echo $latest
