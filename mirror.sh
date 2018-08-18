@@ -22,9 +22,9 @@ major=`tail -n 6 index.html | grep href= | cut -d"/"  -f5 | cut -c 3- | head -n 
 
 ret=`numCompare $second_last $last`
 if [ $ret -eq 0 ]; then
-    latest=`echo v${major}.${second_last}`
+    latest=`echo ${major}.${second_last}`
 else
-    latest=`echo v${major}.${last}`
+    latest=`echo ${major}.${last}`
 fi
 
 echo $latest
