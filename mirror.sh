@@ -3,8 +3,7 @@ kernels='kernels'
 
 numCompare() {
 #   awk -v n1="$1" -v n2="$2" 'BEGIN {printf "%s " (n1<n2?"<":">=") " %s\n", n1, n2}'
-if
-elif (( $(awk -v d1="$1" -v d2="$2" 'BEGIN {print ("'$d1'" > "'$d2'")}') )); then
+if (( $(awk -v d1="$1" -v d2="$2" 'BEGIN {print ("'$d1'" > "'$d2'")}') )); then
     echo "1" # yes it is
 else
     echo "0" # no it is not
