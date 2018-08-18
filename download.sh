@@ -5,7 +5,7 @@ aria2c -q -x 16 --allow-overwrite=true --auto-file-renaming=false ${site}/index.
 
 echo -e "Latest kernel is:"  ;
 
-latest=`tail -n 5 index.html | grep href= | cut -d"/"  -f5 | cut -c 3-`
+latest=`tail -n 5 index.html | grep href= | cut -d"-" -f3- | cut -c -6`
 echo $latest
 echo $latest > latest
 
