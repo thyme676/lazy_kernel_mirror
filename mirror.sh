@@ -41,7 +41,7 @@ modules=`cat index.html | grep modules | grep href= | sed -n 1p | cut -d">" -f2 
 echo -e $all "\n" $headers "\n" $image
 
 [ -d kernels ] || mkdir kernels
-chmod 744 kernels
+chmod 755 kernels
 cd ${kernels};
 pwd
 sleep 10;
