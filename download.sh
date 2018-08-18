@@ -9,6 +9,12 @@ latest=`tail -n 5 index.html | grep href= | cut -d"-" -f3- | cut -c -6`
 echo $latest
 echo $latest > latest
 
+if [[ `uname -a | cut -d" " -f3 | cut -d"-" -f1-2` == `tail -n 5 index.html | grep href= | cut -d"-" -f3-4` ]]
+then
+	echo "Already have the latest version local! :)"
+	exit -1
+fi
+
 all=`cat index.html | grep headers | grep href= | sed -n 1p | cut -d">" -f2 | cut -d"<" -f1`
 headers=`cat index.html | grep headers | grep href= | sed -n 2p | cut -d">" -f2 | cut -d"<" -f1`
 image=`cat index.html | grep image | grep href= | sed -n 1p | cut -d">" -f2 | cut -d"<" -f1`
