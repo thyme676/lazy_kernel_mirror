@@ -3,7 +3,8 @@ kernels='kernels'
 
 numCompare() {
 #   awk -v n1="$1" -v n2="$2" 'BEGIN {printf "%s " (n1<n2?"<":">=") " %s\n", n1, n2}'
-if (( $(awk -v d1="$1" -v d2="$2" 'BEGIN {print ("'$d1'" >= "'$d2'")}') )); then
+if
+elif (( $(awk -v d1="$1" -v d2="$2" 'BEGIN {print ("'$d1'" > "'$d2'")}') )); then
     echo "1" # yes it is
 else
     echo "0" # no it is not
@@ -16,8 +17,8 @@ echo -e "Latest kernel is:"  ;
 
 chmod 644 index.html
 #latest=`tail -n 5 index.html | grep href= | cut -d"/"  -f5 | cut -c 3-`
-last=`tail -n 5 index.html | grep href= | cut -d"/"  -f5 | cut -c 3- | cut -d"." -f2-`
-second_last=`tail -n 6 index.html | grep href= | cut -d"/"  -f5 | cut -c 3- | head -n 1 | cut -d"." -f2-`
+last=`tail -n 5 index.html | grep href= | cut -d"/"  -f5 | cut -c 3- | cut -d"." -f2- | cut -d"-" -f1`
+second_last=`tail -n 6 index.html | grep href= | cut -d"/"  -f5 | cut -c 3- | head -n 1 | cut -d"." -f2- | cut -d"-" -f1`
 major=`tail -n 6 index.html | grep href= | cut -d"/"  -f5 | cut -c 3- | head -n 1 | cut -d"." -f1`
 
 ret=`numCompare $second_last $last`
