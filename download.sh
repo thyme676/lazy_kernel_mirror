@@ -27,12 +27,6 @@ aria2c  -x 16 --allow-overwrite=false --auto-file-renaming=false ${site}/kernels
 aria2c  -x 16 --allow-overwrite=false --auto-file-renaming=false ${site}/kernels/${image} #&> /dev/null;
 aria2c  -x 16 --allow-overwrite=false --auto-file-renaming=false ${site}/kernels/${modules} #&> /dev/null;
 
-result=$?
-#echo $result
-if [ $result -ne 0 ]; then
-	echo "Already have the latest version local! :)"
-	exit -1
-fi
 
 sudo dpkg -i *.deb
 
