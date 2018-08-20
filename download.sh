@@ -27,6 +27,13 @@ aria2c  -x 16 --allow-overwrite=false --auto-file-renaming=false ${site}/kernels
 aria2c  -x 16 --allow-overwrite=false --auto-file-renaming=false ${site}/kernels/${image} #&> /dev/null;
 aria2c  -x 16 --allow-overwrite=false --auto-file-renaming=false ${site}/kernels/${modules} #&> /dev/null;
 
+read -p 'Update to latest kernel?\nType "yes" to continue' yesno
+
+if [ $yesno != "yes" ]
+then
+    echo "Have a nice day, latest not installed."
+    exit -1
+fi
 
 sudo dpkg -i *.deb
 
