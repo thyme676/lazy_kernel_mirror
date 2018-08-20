@@ -50,4 +50,4 @@ aria2c  -x 16 http://kernel.ubuntu.com/~kernel-ppa/mainline/${latest}/${headers}
 aria2c  -x 16 http://kernel.ubuntu.com/~kernel-ppa/mainline/${latest}/${image} --auto-file-renaming=false
 aria2c  -x 16 http://kernel.ubuntu.com/~kernel-ppa/mainline/${latest}/${modules} --auto-file-renaming=false
 
-chmod 744 ${all} ${headers} ${image} ${modules} 
+chmod 755 ${all} ${headers} ${image} ${modules}
