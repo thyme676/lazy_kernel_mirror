@@ -2,11 +2,7 @@
 kernels='kernels'
 
 numCompare() {
-if (( $(awk -v n1=$1 -v n2=$2 ' BEGIN {print ($n1 > $n2) ? 1:0}') )); then
-    echo "1" # first is greater
-else
-    echo "0" # no it is not
-fi
+awk  ' BEGIN {print ($1 > $2) ? 1:0}'
 }
 
 aria2c -q -x 16 --allow-overwrite=true  http://kernel.ubuntu.com/~kernel-ppa/mainline/ ;
