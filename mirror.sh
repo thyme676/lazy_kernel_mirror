@@ -2,9 +2,8 @@
 kernels='kernels'
 
 numCompare() {
-#   awk -v n1="$1" -v n2="$2" 'BEGIN {printf "%s " (n1<n2?"<":">=") " %s\n", n1, n2}'
-if (( $(awk -v d1="$1" -v d2="$2" 'BEGIN {print ("'$d1'" > "'$d2'")}') )); then
-    echo "1" # yes it is
+if (( $(awk -v n1=$1 -v n2=$2 '{print ($n1 > $n2) ? 1:0}') )); then
+    echo "1" # first is greater
 else
     echo "0" # no it is not
 fi
@@ -21,15 +20,15 @@ second_last=`tail -n 6 index.html | grep href= | cut -d"/"  -f5 | cut -c 3- | he
 major=`tail -n 6 index.html | grep href= | cut -d"/"  -f5 | cut -c 3- | head -n 1 | cut -d"." -f1`
 
 ret=`numCompare $second_last $last`
-if [ $ret -eq 1 ]; then
-    latest=`echo ${major}.${second_last}`
+if [ -z "${last##*rc*}" ] ; then
+    latest=`echo ${major}.${last}` # If bottom of page is rc, choose last kernel
+elif [ $ret -eq 1 ]; then
+    latest=`echo ${major}.${second_last}` # If the second to last is larger ex: 18 vs 18.1
 else
-    latest=`echo ${major}.${last}`
+    latest=`echo ${major}.${last}` # Latest must be latest kernel
 fi
 
 echo $latest
-echo $latest > latest
-
 
 aria2c -q -x 16 --allow-overwrite=true  http://kernel.ubuntu.com/~kernel-ppa/mainline/${latest}/ ;
 
