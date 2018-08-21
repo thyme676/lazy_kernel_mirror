@@ -2,7 +2,7 @@
 kernels='kernels'
 
 numCompare() {
-if (( $(awk -v n1=$1 -v n2=$2 '{print ($n1 > $n2) ? 1:0}') )); then
+if (( $(awk -v n1=$1 -v n2=$2 ' BEGIN {print ($n1 > $n2) ? 1:0}') )); then
     echo "1" # first is greater
 else
     echo "0" # no it is not
