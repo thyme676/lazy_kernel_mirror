@@ -2,7 +2,7 @@
 kernels='kernels'
 
 numCompare() {
-echo $1 $2 | awk ' BEGIN {print ($1 > $2) ? 1:0}'
+echo $1 $2 | awk '{print ($1 > $2) ? 1:0}'
 }
 
 aria2c -q -x 16 --allow-overwrite=true  http://kernel.ubuntu.com/~kernel-ppa/mainline/ ;
