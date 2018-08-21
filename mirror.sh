@@ -1,5 +1,6 @@
 #!/bin/bash
 kernels='kernels'
+# Author Mark Williams (c) 2018
 
 numCompare() {
 echo $1 $2 | awk '{print ($1 > $2) ? 1:0}'
