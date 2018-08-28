@@ -12,12 +12,13 @@ echo -e "Latest kernel is:"  ;
 chmod 644 index.html
 #latest=`tail -n 5 index.html | grep href= | cut -d"/"  -f5 | cut -c 3-`
 last=`tail -n 5 index.html | grep href= | cut -d"/"  -f5 | cut -c 3- | cut -d"." -f2- | cut -d"-" -f1`
+last_full=`tail -n 5 index.html | grep href= | cut -d"/"  -f5 | cut -c 3- | cut -d"." -f2- | cut -d"-" -f1-`
 second_last=`tail -n 6 index.html | grep href= | cut -d"/"  -f5 | cut -c 3- | head -n 1 | cut -d"." -f2- | cut -d"-" -f1`
 major=`tail -n 6 index.html | grep href= | cut -d"/"  -f5 | cut -c 3- | head -n 1 | cut -d"." -f1`
 
 ret=`numCompare $second_last $last`
-if [ -z "${last##*rc*}" ] ; then
-    latest=`echo ${major}.${last}` # If bottom of page is rc, choose last kernel
+if [ -z "${last_full##*rc*}" ] ; then
+    latest=`echo ${major}.${last_full}` # If bottom of page is rc, choose last kernel
 elif [ $ret -eq 1 ]; then
     latest=`echo ${major}.${second_last}` # If the second to last is larger ex: 18 vs 18.1
 else
